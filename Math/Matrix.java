@@ -1,4 +1,5 @@
-// Matrix Manipulation in Java
+// Matrix class contains a matrix in the form of a two do array.
+// Currently supports the addition of two matrices and a simple toString method.  
 
 import java.util.ArrayList;
 public class Matrix
