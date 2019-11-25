@@ -64,13 +64,13 @@ public class LinkedList<T>
 	public String toString()
 	{
 		Node<T> temp = front;
-		String r = new String();
+		StringBuilder r = new StringBuilder();
 		while (temp != null)
 		{
-			r += temp.getData().toString();
+			r.append(temp.getData().toString());
 			temp = temp.next();
 		}
-		return r;
+		return r.toString();
 	}
 
 	class Node<T>
