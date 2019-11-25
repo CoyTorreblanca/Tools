@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class LinkedList<T>
 {
 	private Node<T> front;
@@ -21,23 +23,14 @@ public class LinkedList<T>
 		if (front == null)
 		{
 			front = new Node<T>(data);
-			back = null;
-			front.setNext(back);
+			back = front;
 			return front;
-		}
-
-		// If LinkedList only has one node
-		if (back == null)
-		{
-			back = new Node<T>(data, front, null);
-			front.setNext(back);
-			return back;
 		}
 
 		Node<T> nuevo = new Node<T>(data, back, null);
 		back.setNext(nuevo);
 		back = nuevo;
-		return back;
+		return nuevo;
 	}
 
 	public Node<T> remove()
@@ -45,18 +38,13 @@ public class LinkedList<T>
 		if (front == null)
 		       return null;
 		
-		if (back == null)
-		{
-			Node<T> temp = front;
-			front = null;
-			return front;
-		}
-	
 		Node<T> temp = back;
 		back = back.prev();
 
 		if (back == null)
 			front = null;
+		else
+			back.setNext(null);
 
 		return temp;
 	}
@@ -117,4 +105,26 @@ public class LinkedList<T>
 			return data;
 		}
 	}
+
+	public static void main (String [] args)
+	{
+		Scanner scan = new Scanner(System.in);
+		String menu = "1. Insert, 2. Remove, 3. Print";
+		LinkedList<String> ll = new LinkedList<String>();
+
+		int x = 1;
+
+		while(x == 1 || x == 2 || x == 3)
+		{
+			System.out.println(menu);
+			x = scan.nextInt();
+
+			if (x == 1)
+				ll.insert(scan.next());
+			else if (x == 2)
+				ll.remove();
+			else if (x == 3)
+				System.out.println(ll.toString());
+		}
+	}	
 }
