@@ -1,10 +1,12 @@
-// Coy Torreblanca, 12/3/2019
+// Coy Torreblanca
 // Naive Recursion Solution to Fibonacci
 // Space Complexity: O(n)
 // Time Complexity: O(2^n) || O(phi^n)
 // F(0) = 0
 // F(1) = 1
 // F(n) = F(n - 1) + F(n - 2)
+
+import java.util.HashMap;
 
 public class Naive
 {
@@ -27,13 +29,13 @@ public class Naive
 	// Test
 	public static void main(String [] args)
 	{
-		int [] fibs = new int [N];
+		// Process Fib numbers up to the nth number
+		HashMap<Integer, Integer> fibs = FibSet.Fib();
 
-		cache = Fib();
-
-		for (int i = 0; i < N; i++)
+		// Calculate every Fib and cross reference with Map
+		for (int i = 0; i < fibs.size(); i++)
 		{
-			if (fibs[i] != fibDr(n))
+			if (fibs.get(i) != fib(i))
 			       System.err.println("ERR");
 		}
 
